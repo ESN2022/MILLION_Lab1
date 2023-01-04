@@ -8,9 +8,9 @@ use IEEE.numeric_std.all;
 
 entity Lab1_sys is
 	port (
-		clk_clk                          : in  std_logic := '0'; --                       clk.clk
-		pio_0_external_connection_export : out std_logic;        -- pio_0_external_connection.export
-		reset_reset_n                    : in  std_logic := '0'  --                     reset.reset_n
+		clk_clk                          : in  std_logic                    := '0'; --                       clk.clk
+		pio_0_external_connection_export : out std_logic_vector(7 downto 0);        -- pio_0_external_connection.export
+		reset_reset_n                    : in  std_logic                    := '0'  --                     reset.reset_n
 	);
 end entity Lab1_sys;
 
@@ -81,12 +81,12 @@ architecture rtl of Lab1_sys is
 		port (
 			clk        : in  std_logic                     := 'X';             -- clk
 			reset_n    : in  std_logic                     := 'X';             -- reset_n
-			address    : in  std_logic_vector(1 downto 0)  := (others => 'X'); -- address
+			address    : in  std_logic_vector(2 downto 0)  := (others => 'X'); -- address
 			write_n    : in  std_logic                     := 'X';             -- write_n
 			writedata  : in  std_logic_vector(31 downto 0) := (others => 'X'); -- writedata
 			chipselect : in  std_logic                     := 'X';             -- chipselect
 			readdata   : out std_logic_vector(31 downto 0);                    -- readdata
-			out_port   : out std_logic                                         -- export
+			out_port   : out std_logic_vector(7 downto 0)                      -- export
 		);
 	end component Lab1_sys_pio_0;
 
@@ -128,7 +128,7 @@ architecture rtl of Lab1_sys is
 			onchip_memory2_0_s1_byteenable                 : out std_logic_vector(3 downto 0);                     -- byteenable
 			onchip_memory2_0_s1_chipselect                 : out std_logic;                                        -- chipselect
 			onchip_memory2_0_s1_clken                      : out std_logic;                                        -- clken
-			pio_0_s1_address                               : out std_logic_vector(1 downto 0);                     -- address
+			pio_0_s1_address                               : out std_logic_vector(2 downto 0);                     -- address
 			pio_0_s1_write                                 : out std_logic;                                        -- write
 			pio_0_s1_readdata                              : in  std_logic_vector(31 downto 0) := (others => 'X'); -- readdata
 			pio_0_s1_writedata                             : out std_logic_vector(31 downto 0);                    -- writedata
@@ -240,7 +240,7 @@ architecture rtl of Lab1_sys is
 	signal mm_interconnect_0_nios2_gen2_0_debug_mem_slave_writedata        : std_logic_vector(31 downto 0); -- mm_interconnect_0:nios2_gen2_0_debug_mem_slave_writedata -> nios2_gen2_0:debug_mem_slave_writedata
 	signal mm_interconnect_0_pio_0_s1_chipselect                           : std_logic;                     -- mm_interconnect_0:pio_0_s1_chipselect -> pio_0:chipselect
 	signal mm_interconnect_0_pio_0_s1_readdata                             : std_logic_vector(31 downto 0); -- pio_0:readdata -> mm_interconnect_0:pio_0_s1_readdata
-	signal mm_interconnect_0_pio_0_s1_address                              : std_logic_vector(1 downto 0);  -- mm_interconnect_0:pio_0_s1_address -> pio_0:address
+	signal mm_interconnect_0_pio_0_s1_address                              : std_logic_vector(2 downto 0);  -- mm_interconnect_0:pio_0_s1_address -> pio_0:address
 	signal mm_interconnect_0_pio_0_s1_write                                : std_logic;                     -- mm_interconnect_0:pio_0_s1_write -> mm_interconnect_0_pio_0_s1_write:in
 	signal mm_interconnect_0_pio_0_s1_writedata                            : std_logic_vector(31 downto 0); -- mm_interconnect_0:pio_0_s1_writedata -> pio_0:writedata
 	signal mm_interconnect_0_onchip_memory2_0_s1_chipselect                : std_logic;                     -- mm_interconnect_0:onchip_memory2_0_s1_chipselect -> onchip_memory2_0:chipselect

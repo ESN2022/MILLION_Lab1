@@ -4,11 +4,12 @@
 
 int main() {
     // PIO_0_BASE defined in system.h
-    unsigned char state = 0;
+    unsigned char state = 0b1;
     while (1) {
         IOWR_ALTERA_AVALON_PIO_DATA(PIO_0_BASE, state);
-        state = ~state;
-        usleep(1000000);
+	// might be a bit overkill...
+        state = (state << 1) | (state >> (sizeof(state)*8 - 1));
+        usleep(250000);
     }
     return 0;
 }

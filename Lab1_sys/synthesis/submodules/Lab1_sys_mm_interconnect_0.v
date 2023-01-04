@@ -43,7 +43,7 @@ module Lab1_sys_mm_interconnect_0 (
 		output wire [3:0]  onchip_memory2_0_s1_byteenable,                 //                                         .byteenable
 		output wire        onchip_memory2_0_s1_chipselect,                 //                                         .chipselect
 		output wire        onchip_memory2_0_s1_clken,                      //                                         .clken
-		output wire [1:0]  pio_0_s1_address,                               //                                 pio_0_s1.address
+		output wire [2:0]  pio_0_s1_address,                               //                                 pio_0_s1.address
 		output wire        pio_0_s1_write,                                 //                                         .write
 		input  wire [31:0] pio_0_s1_readdata,                              //                                         .readdata
 		output wire [31:0] pio_0_s1_writedata,                             //                                         .writedata
@@ -620,7 +620,7 @@ module Lab1_sys_mm_interconnect_0 (
 	);
 
 	altera_merlin_slave_translator #(
-		.AV_ADDRESS_W                   (2),
+		.AV_ADDRESS_W                   (3),
 		.AV_DATA_W                      (32),
 		.UAV_DATA_W                     (32),
 		.AV_BURSTCOUNT_W                (1),
