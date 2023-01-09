@@ -3,9 +3,8 @@
 #include <altera_avalon_pio_regs.h>
 
 int main() {
-    // PIO_0_BASE/PIO_1_BASE defined in system.h
-    unsigned char state = 0b1;
-    unsigned char enable;
+    // PIO_0_BASE defined in system.h
+    unsigned char enable, state = 0b1;
 
     while (1) {
         enable = IORD_ALTERA_AVALON_PIO_DATA(PIO_1_BASE);
