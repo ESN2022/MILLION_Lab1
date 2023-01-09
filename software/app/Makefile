@@ -139,10 +139,10 @@ ACDS_VERSION := 18.1
 # Define path to the application ELF. 
 # It may be used by the makefile fragments so is defined before including them. 
 # 
-ELF := main_polling.elf
+ELF := main_interrupt.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS += ../main_polling.c
+C_SRCS += ../main_interrupt.c
 CXX_SRCS :=
 ASM_SRCS :=
 
